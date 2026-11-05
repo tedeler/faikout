@@ -1,0 +1,140 @@
+## Support
+
+You can support this project in many ways, including testing and diagnostics, merge requests, clearly described issues and suggestions, and [buying Faikout boards from us](https://shop.revk.uk?mrlHiG1i). Thank you all for your support. This is open source so others can make and sell (with trademark restrictions). AI based bug reports or MRs will get you blocked.
+
+<a href="https://shop.revk.uk?mrlHiG1i" alt="Buy it on Lectronz"><img src="https://lectronz-images.b-cdn.net/static/badges/buy-it-on-lectronz-medium.png" /></a>
+
+# ESP32-Faikout
+
+Everyone knows Daikin make some of the best air conditioners out there, mechanically speaking. Sadly their WiFi control modules are not so good, especially the latest models which are all cloud based, require an internet connection to even work, and are slow.
+
+[<img src="image/youtube.jpg" width=30% alt="Faikout">](https://www.youtube.com/watch?v=7ANKUI45cHw "Faikout")
+<img src="image/cable.jpg" width=30% align="right" Alt="Optional cable">
+<img src="image/case.jpg" width=30% align="right" Alt="Optional case">
+
+This code/module provides local control via web interface, MQTT, and HomeAssistant integration, all with no cloud crap.
+
+<img src="image/remote.jpg" width=33% align=right>
+
+* There is also a new [Faikout Remote Control](https://remote.revk.uk/) available, BLE linked to the Faikout, with environmental sensors, available now.
+
+I'd like to thank the contributors, but contributions are made and accepted on basis that you issue your contribution under the same GPL licence as the project. Forks are allowed on the basis that your forks are on the same GPL licence as the project.
+
+## Trademark
+
+This is an open source project, but bear in mind you cannot sell boards bearing the Andrews & Arnold Ltd name, the A&A logo, the registered trademark Faikout, the registered trademark AJK logo, or the GS1 allocated EANs assigned to Andrews & Arnold Ltd.
+
+Note the name change from Faikin to Faikout as Daikin complained to Amazon and caused a lot of issues. As such Faikout is now a registered trademark to avoid such issues.
+
+## Home Assistant Integration
+
+There has been a lot of work on integrating with Home Assistant as a climate device, and other sensors. This is all based on using MQTT (either HA mosquitto broker, or a broker to which HA also connects). This provides real time responses and sensor data and works very well.
+
+In addition, for other management systems than HA, the *legacy* Daikin local HTTP URLs are also supported to some extent. The support coverage is not as good, and maintence of this is less of a priority - but as always (human) suggestions and pull requests are welcome in this area. If you are using the old Daikin HA integration which uses these legacy HTTP URLs, please update to using MQTT. The config is automatic over MQTT - you just have to set the broken, username, and password. 
+
+## Further manuals / links
+
+- [Work in progress / release notes](/RevK/ESP32-Faikout/wiki/Work-in-progress)
+- [Wiring](/RevK/ESP32-Faikout/wiki/Wiring)
+- [Setup](Manuals/Setup.md) Manual
+- [Controls](Manuals/Controls.md) Manual
+- [Advanced](Manuals/Advanced.md) Manual
+- [ESP8266 port](https://github.com/Sonic-Amiga/ESP8266-Faikin) of this code
+- [list of supported air-con](/RevK/ESP32-Faikout/wiki/List-of-confirmed-working-air-con-units) WiKi (please update as needed)
+- [DoC](Manuals/DoC.md) and Vulnerability disclosure policy
+- [S21](Manuals/S21.md) reverse engineered details of `S21` protocol
+
+For support, see issues.
+
+## Safety
+
+Always propely isolate power before opening your air-con. Take care as dangerous voltages. Some connector types have dangerous voltage in operation.
+
+### Ethernet (and WiFi)
+
+The Ethernet board has an RJ45 10/100 Ethernet connector for improved reliability and privacy. The Ethernet has an isolating transformer and clearances, but I have to stress **this is a prototype/dev board for specialist/hobbyist use only, and is NOT certified for grid power safety isolation. DO NOT USE WITH X403 CONNECTOR or any connector with dangerous voltages.**
+
+### PoE Ethernet (and WiFi)
+
+The PoE Ethernet board has an RJ45 10/100 Ethernet connector for improved reliability and privacy, with PoE power for the Faikout module. The PoE power module has electrical isolation. The board also has opto isolators for the S21 connection, electrically isolating it from the air conditioning unit. This adds extra layers of safety, however I have to stress **this is a prototype/dev board for specialist/hobbyist use only, and is NOT certified for grid power safety isolation.**
+
+*Note that Ethernet uses more power - there are some Daikin models with much less power from the air-con, for these PoE may be a better choice for Ethernet use, as the main board (and Ethernet chip) is powered from the PoE, and not the air-con.*
+
+## PCB and case
+
+Buy from [shop.revk.uk](https://shop.revk.uk?mrlHiG1i). Also available from a third party in Australia eBay.
+
+<img src=PCB/Faikout/Faikout.png width=25%><img src=PCB/Faikout/Faikout-bottom.png width=25%><img src=PCB/Faikout/FaikoutC.png width=25%>
+
+New Ethernet option.
+
+<img src=PCB/FaikoutETH/Faikout-90.png width=25%><img src=PCB/FaikoutETH/Faikout-bottom.png width=25%><img src=PCB/FaikoutETH/FaikoutC.png width=25%>
+
+New Opto-isiolated PoE Ethernet option.
+
+<img src=PCB/FaikoutPOE/Faikout-90.png width=25%><img src=PCB/FaikoutPOE/Faikout-bottom.png width=25%><img src=PCB/FaikoutPOE/FaikoutC.png width=25%>
+
+Board are supplied in a panel, with snap off parts. The basic Faikout board can be two sizes 45x36mm or 40x16mm.
+
+<img src=PCB/Faikout/Faikout-panel.png width=25%><img src=PCB/FaikoutETH/Faikout-panel.png width=25%><img src=PCB/FaikoutPOE/Faikout-panel.png width=25%>
+
+
+## Why I made this
+
+The history is that, after years of using Daikin air-con in my old home, and using the local http control, in my new house in Wales the WiFi was all cloud based with no local control, and useless, and slow. Just configuring it was a nightmare. I spent all day reverse engineering it and making a new module to provide local control. Pull requests and feature ideas welcome.
+
+This whole project is almost entirely by me, but with some valuable contributions from others (thank you). All of my bits are copyright by me and Andrews & Arnold Ltd who sponsor the whole project, and released under GPL. Whilst not required by the licence, attribution and links would be appreciated if you reuse this.
+
+## How to get one
+
+But also, the PCB designs are published, including production files for [JLCPCB](https://jlcpcb.com). You need to remove trademarks, etc, and you would also need something to program them (TC2030 lead). Obviously you need some experience with PCB ordering and diagnostics if getting your own boards made.
+
+# Set-up
+
+Appears as access point with simple web page to set up on local WiFI. On iPhone the setup page auto-loads.
+
+<img src="Manuals/WiFi1.png" width=49%>
+<img src="Manuals/WiFi2.png" width=49%>
+
+# Operation
+
+Local interactive web control page using *hostname*.local, no app required, no external internet required.
+
+<img src="Manuals/WiFi3.png" width=49%>
+
+- [Setup](Manuals/Setup.md) Manual
+- [Controls](Manuals/Controls.md) Manual
+- [Advanced](Manuals/Advanced.md) Manual
+
+# Design
+
+* KiCad PCB designs included, with JLCPCB production files
+* 3D printed case STL files
+* Documentation of reverse engineered protocol included
+
+Basically, Daikin have gone all cloudy with the latest WiFi controllers. This module is designed to provide an alternative.
+
+<img src="Manuals/MiSensor.jpg" align=right width="25%">
+
+* Simple local web based control with live websocket status, easy to save as desktop icon on a mobile phone
+* MQTT reporting and controls
+* Works with Home Assistant over MQTT - note Home Assistant can work with HomeKit
+* Includes linux mysql/mariadb based logging and graphing tools
+* Works with [EnvMon](https://codeberg.org/RevK/ESP32-EnvMon) Environmental Monitor for finer control and status display
+* or, works with BlueCoinT and Telink [BLE temperature sensor](Manuals/BLE.md) as a remote reference in an auto mode
+* Automatically works out if S21 or X50 protocol (used on bigger/ducted units)
+* Backwards compatible direct `/aircon/...` URLs
+
+# Building code yourself
+
+Git clone this `--recursive` to get all the submodules, and it should build with just `make`. There are make targets for other variations, but this hardware is the `make pico` or `make s3` version. The `make` actually runs the normal `idf.py` to build which then uses cmake. `make menuconfig` can be used to fine tune the settings, but the defaults should be mostly sane. `make flash` should work to program. If flashing yourself, you will need a programming lead, e.g. [Tazmotizer](https://codeberg.org/RevK/Tasmotizer-PCB) or similar, and of course the full ESP IDF environment. The latest boards also have 4 pads for direct USB connection to flash with no adaptor. The modules on Amazon come pre-loaded and can upgrade over the air.
+
+The code is normally set up to automatically upgrade the software, checking roughly once a week. You can change this in settings via MQTT.
+
+If you build yourself, you either need no code signing, or your own signing key. This will break auto-updates which try to load my code releases, so you need to adjuist settings `otahost` and `otaauto` accordingly. You can set these in the build config, along with WiFi settings, etc.
+
+## Flashing code
+
+You will need to connect a suitable programming lead. Boards have a tag-connect compatible header for a [TC2030-USB-NL](https://www.tag-connect.com/product/tc2030-usb-nl) lead. Note that the latest boards have test pads on the back which include USB, so you can solder a USB lead if necessary.
+
+See [https://codeberg.org/RevK/ESP32-RevK](https://codeberg.org/RevK/ESP32-RevK) for more details of how to flash the files easily.

@@ -1,0 +1,15 @@
+[Unit]
+Description=Faikout log
+After=mysql.service
+
+[Service]
+Type=simple
+User=adrian
+Group=adrian
+WorkingDirectory=/projects/Faikout
+ExecStart=/projects/Faikout/faikoutlog --mqtt-hostname=mqtt
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
